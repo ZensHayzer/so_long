@@ -6,7 +6,7 @@
 #    By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 22:58:35 by ajeanne           #+#    #+#              #
-#    Updated: 2022/12/08 21:05:16 by ajeanne          ###   ########.fr        #
+#    Updated: 2022/12/14 18:43:08 by ajeanne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@ SRCS =		$(SRCS_LOC)main.c					\
 			$(SRCS_LOC)initialize.c				\
 			$(SRCS_LOC)bool_map.c				\
 			$(SRCS_LOC)recursive_checker.c		\
+			$(SRCS_LOC)free.c					\
+			$(SRCS_LOC)window.c					\
+			$(SRCS_LOC)hooks.c					\
 			$(SRCS_GNL)get_next_line.c			\
 			$(SRCS_GNL)get_next_line_utils.c
 

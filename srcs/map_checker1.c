@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:20:25 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/09 15:46:46 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:36:53 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ int	pre_check_wrong_map(t_map_content *map_content)
 	int		i;
 
 	i = 0;
-	buf = ft_calloc(4, sizeof(*buf));
+	buf = ft_calloc_so(4, sizeof(char));
 	if (!buf)
 		return (0);
 	fd = open(map_content->map_name, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		return (free(buf), 0);
 	ret = read(fd, buf, 3);
-	if (ret < 0 || ret == 0)
-		return (0);
+	if (ret != 3)
+		return (free(buf), 0);
 	close(fd);
-	while (buf[i])
+	while (buf && buf[i])
 	{
 		if (buf[i] != '1')
 			return (pre_check_wrong_map_error(buf, 1));
@@ -102,10 +102,10 @@ int	access_checker(t_map_content *map_content)
 	player_position(map_content, &map_content->player_x, &map_content->player_y);
 	if (!exit_checker(map_content->map, bool_map, map_content->player_y,
 			map_content->player_x))
-		return (access_checking_error(1));
+		return (access_checking_error(1, bool_map, map_content->tot_lines));
 	player_position(map_content, &map_content->player_x, &map_content->player_y);
 	fill_boolmap(map_content->map, bool_map, map_content->tot_lines, map_content->lines_len);
 	if (collectibles_checker(map_content, bool_map, map_content->player_y, map_content->player_x) != map_content->items)
-		return (access_checking_error(1));
-	return (1);
+		return (access_checking_error(1, bool_map, map_content->tot_lines));
+	return (free_boolmap(bool_map, map_content->tot_lines), 1);
 }
