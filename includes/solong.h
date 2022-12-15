@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 00:09:58 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/14 18:42:59 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/15 15:56:56 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,6 @@
 /* 			STRUCTS			 */
 /* ***************************/
 
-typedef	struct s_map_content
-{
-	int		walls;
-	int		items;
-	int		exit;
-	int		start;
-	int		tot_lines;
-	int		lines_len;
-	int		items_got;
-	int		player_x;
-	int		player_y;
-	char	last_pos;
-	char	*map_name;
-	char	**map;
-}		t_map_content;
-
 typedef	struct s_images
 {
 	void	*wall;
@@ -56,9 +40,25 @@ typedef	struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	t_images		*img;
 }		t_vars;
 
+typedef	struct s_map_content
+{
+	int		walls;
+	int		items;
+	int		exit;
+	int		start;
+	int		tot_lines;
+	int		lines_len;
+	int		items_got;
+	int		player_x;
+	int		player_y;
+	char	last_pos;
+	char	*map_name;
+	char	**map;
+	t_images		img;
+	t_vars			vars;
+}		t_map_content;
 
 /* ***************************/
 /* 			FUNCTIONS		 */
@@ -106,12 +106,20 @@ int		exit_checker(char **map, int **bool_map, int y, int x);
 int		collectibles_checker(t_map_content *map_content, int **bool_map, int y, int x);
 
 // window
-int 	window(t_map_content *map_content);
-void	close_img(t_vars *vars);
+int		init_images(void *mlx, t_images *img);
+int		window_init(t_vars *vars, t_map_content *map_c, t_images *img);
+int 	window(t_map_content map_content);
+void	close_img(t_vars *vars, t_images *img);
+void	fill_window(t_map_content *map_content, void *mlx, void *win, t_images img);
 
 // hooks
-int		close_hook(int keycode, t_vars *vars);
+int		close_hook(int keycode, t_map_content *map_c);
+int		close_hook_cross(t_map_content *map_c);
+
+// player
+int		player_move(char c, t_map_content *map_c);
 
 //	free
 void	free_map_content(t_map_content *map_content);
+void	free_closing(t_map_content *map_c, t_vars *vars);
 #endif

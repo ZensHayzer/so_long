@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:31:46 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/14 18:41:30 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/15 15:55:30 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ int	map_checker(t_map_content *map_content)
 	return (true);
 }
 
+void	print_tab(t_map_content oui)
+{
+	int	i = -1;
+	int	y = -1;
+
+	while (oui.map[++i])
+	{
+		while (oui.map[i][++y])
+			dprintf(STDERR_FILENO, "%c", oui.map[i][y]);
+		dprintf(STDERR_FILENO, "\n");
+		y = -1;
+	}
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_map_content	map_content;
@@ -48,7 +63,8 @@ int	main(int argc, char **argv)
 		map_content.map_name = argv[1];
 		if (!map_checker(&map_content))
 			return (free_map_content(&map_content), EXIT_FAILURE);
+		window(map_content);
+		return (free_map_content(&map_content), EXIT_SUCCESS);
 	}
-	window(&map_content);
-	return (free_map_content(&map_content), EXIT_SUCCESS);
+	return (0);
 }
