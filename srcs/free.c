@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:10:01 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/15 13:45:18 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/16 18:53:01 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	free_map_content(t_map_content *map_content)
 
 void	free_closing(t_map_content *map_c, t_vars *vars)
 {
+	close_img(&map_c->vars, &map_c->img);
+	mlx_destroy_window(map_c->vars.mlx, map_c->vars.win);
+	mlx_destroy_display(map_c->vars.mlx);
 	if (vars->mlx)
 		free(vars->mlx);
 	free_map_content(map_c);

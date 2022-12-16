@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 20:42:13 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/09 18:34:48 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:22:30 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	exit_checker(char **map, int **bool_map, int y, int x)
 	return (0);
 }
 
-int	collectibles_checker(t_map_content *map_content, int **bool_map, int y, int x)
+int	collectibles_checker(t_map_content *map_content, int **bool_map, int y,
+int x)
 {
 	int	cnt;
 

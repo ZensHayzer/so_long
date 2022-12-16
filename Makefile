@@ -6,7 +6,7 @@
 #    By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 22:58:35 by ajeanne           #+#    #+#              #
-#    Updated: 2022/12/14 20:30:08 by ajeanne          ###   ########.fr        #
+#    Updated: 2022/12/15 16:58:26 by ajeanne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS =		$(SRCS_LOC)main.c					\
 			$(SRCS_LOC)bool_map.c				\
 			$(SRCS_LOC)recursive_checker.c		\
 			$(SRCS_LOC)player.c					\
+			$(SRCS_LOC)ft_itoa.c				\
 			$(SRCS_LOC)free.c					\
 			$(SRCS_LOC)window.c					\
 			$(SRCS_LOC)hooks.c					\

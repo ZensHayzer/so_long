@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:21:30 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/13 22:47:40 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/15 16:49:11 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	map_content_initializer(t_map_content *map_content)
 	map_content->lines_len = 0;
 	map_content->player_x = 0;
 	map_content->player_y = 0;
+	map_content->mv = 0;
 	map_content->map = NULL;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:50:41 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/11/30 00:51:27 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:23:38 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	map_builder(t_map_content *map_content)
 	int	i;
 
 	i = 0;
-	map_content->map = malloc(sizeof(char**) * (map_content->tot_lines + 1));
+	map_content->map = malloc(sizeof(char *) * (map_content->tot_lines + 1));
 	if (!map_content)
 		return (0);
 	fd = open(map_content->map_name, O_RDONLY);

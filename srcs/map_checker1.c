@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:20:25 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/13 15:36:53 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:05:30 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,20 @@ int	access_checker(t_map_content *map_content)
 	int	**bool_map;
 
 	bool_map = init_boolmap(map_content->map, map_content->tot_lines,
-					map_content->lines_len);
+			map_content->lines_len);
 	if (!bool_map)
 		return (0);
-	player_position(map_content, &map_content->player_x, &map_content->player_y);
+	player_position(map_content, &map_content->player_x,
+		&map_content->player_y);
 	if (!exit_checker(map_content->map, bool_map, map_content->player_y,
 			map_content->player_x))
 		return (access_checking_error(1, bool_map, map_content->tot_lines));
-	player_position(map_content, &map_content->player_x, &map_content->player_y);
-	fill_boolmap(map_content->map, bool_map, map_content->tot_lines, map_content->lines_len);
-	if (collectibles_checker(map_content, bool_map, map_content->player_y, map_content->player_x) != map_content->items)
+	player_position(map_content, &map_content->player_x,
+		&map_content->player_y);
+	fill_boolmap(map_content->map, bool_map, map_content->tot_lines,
+		map_content->lines_len);
+	if (collectibles_checker(map_content, bool_map, map_content->player_y,
+			map_content->player_x) != map_content->items)
 		return (access_checking_error(1, bool_map, map_content->tot_lines));
 	return (free_boolmap(bool_map, map_content->tot_lines), 1);
 }
