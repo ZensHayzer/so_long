@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:43:34 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/16 19:19:20 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/22 01:17:51 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,36 @@ int	is_in(char *str, char c)
 	return (0);
 }
 
-void	fill_window_forest(t_map_content *map_c, t_vars vars, int i, int j)
+void	fill_window_forest(t_map_content *map_c, char mv, int i, int j)
 {
 	if (map_c->map[i][j] == '1')
-		mlx_put_image_to_window(vars.mlx, vars.win, map_c->img.wall,
-			j * map_c->img.x_size, i * map_c->img.y_size);
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.wall, j * map_c->img.x_size, i * map_c->img.y_size);
 	else if (map_c->map[i][j] == '0')
-		mlx_put_image_to_window(vars.mlx, vars.win, map_c->img.ground,
-			j * map_c->img.x_size, i * map_c->img.y_size);
-	else if (map_c->map[i][j] == 'P')
-		mlx_put_image_to_window(vars.mlx, vars.win, map_c->img.player,
-			j * map_c->img.x_size, i * map_c->img.y_size);
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.ground, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'P' && mv == 's')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.p1, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'P' && mv == 'd')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.p_d, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'P' && mv == 'w')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.p_w, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'P' && mv == 'a')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.p_a, j * map_c->img.x_size, i * map_c->img.y_size);
 	else if (map_c->map[i][j] == 'C')
-		mlx_put_image_to_window(vars.mlx, vars.win, map_c->img.item,
-			j * map_c->img.x_size, i * map_c->img.y_size);
-	else if (map_c->map[i][j] == 'E')
-		mlx_put_image_to_window(vars.mlx, vars.win, map_c->img.exit,
-			j * map_c->img.x_size, i * map_c->img.y_size);
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.item, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'E' && map_c->items > map_c->items_got)
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.exit, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'E' && map_c->items == map_c->items_got)
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.exit_o, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'M')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.enc, j * map_c->img.x_size, i * map_c->img.y_size);
 }

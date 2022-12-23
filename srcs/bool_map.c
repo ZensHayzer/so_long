@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 19:30:59 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/08 21:14:51 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/17 12:43:31 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fill_boolmap(char **map, int **bool_map, int height, int width)
 		j = 0;
 		while (j < width)
 		{
-			if (map[i][j] == '1')
+			if (map[i][j] == '1' || map[i][j] == 'M')
 				bool_map[i][j] = 1;
 			else
 				bool_map[i][j] = 0;

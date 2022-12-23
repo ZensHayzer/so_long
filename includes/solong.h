@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 00:09:58 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/16 19:25:13 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 01:03:46 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ typedef struct s_images
 {
 	void	*wall;
 	void	*ground;
-	void	*player;
+	void	*p1;
+	void	*p2;
+	void	*p3;
+	void	*p4;
+	void	*p_w;
+	void	*p_a;
+	void	*p_d;
 	void	*item;
 	void	*exit;
+	void	*exit_o;
+	void	*enc;
 	int		x_size;
 	int		y_size;
 }		t_images;
@@ -42,12 +50,22 @@ typedef struct s_vars
 	void	*win;
 }		t_vars;
 
+typedef struct s_monster
+{
+	int	mon_x;
+	int	mon_y;
+	char	last_pos;
+	struct s_monster	*next;
+}		t_mon;
+
 typedef struct s_map_content
 {
 	int			walls;
 	int			items;
 	int			exit;
 	int			start;
+	int			enc;
+	int			i;
 	int			tot_lines;
 	int			lines_len;
 	int			items_got;
@@ -57,8 +75,9 @@ typedef struct s_map_content
 	char		last_pos;
 	char		*map_name;
 	char		**map;
+	struct s_monster	*mons;
 	t_images	img;
-	t_vars		vars;
+	t_vars	vars;
 }		t_map_content;
 
 /* ***************************/
@@ -91,12 +110,17 @@ void	ft_puterr(char *str);
 char	*gnl_corrector(char *str);
 char	*ft_calloc_so(size_t nmemb, size_t size);
 int		is_in(char *str, char c);
-void	fill_window_forest(t_map_content *map_c, t_vars vars, int i, int j);
+void	fill_window_forest(t_map_content *map_c, char mv, int i, int j);
+
+// utils1
+t_mon	*ft_lstnew();
+int		ft_lstaddback(t_mon **lst, t_mon *element);
 
 // initialize
 int		map_content_initializer(t_map_content *map_content);
 void	access_checker_initializer(t_map_content *map_content,
 			t_map_content *map_content_copy);
+int		monster_init(t_map_content *map_c, t_mon **mon);
 
 // bool_map
 void	free_boolmap(int **bool_map, int height);
@@ -109,15 +133,20 @@ int		collectibles_checker(t_map_content *map_content, int **bool_map, int y,
 			int x);
 
 // window
+int		init_images_1(void *mlx, t_images *img);
 int		init_images(void *mlx, t_images *img);
 int		window_init(t_vars *vars, t_map_content *map_c, t_images *img);
 int		window(t_map_content map_content);
-void	close_img(t_vars *vars, t_images *img);
-void	fill_window(t_map_content *map_content);
+void	fill_window(t_map_content *map_c, char move);
 
 // hooks
 int		close_hook(int keycode, t_map_content *map_c);
 int		close_hook_cross(t_map_content *map_c);
+int		animation_p(t_map_content *map_c);
+
+// monster
+int	monster_move_up(t_map_content *map_c, t_mon *mon);
+int	monster_move(t_map_content *map_c);
 
 // player
 int		player_move(char c, t_map_content *map_c);
@@ -128,4 +157,9 @@ char	*ft_itoa(int n);
 //	free
 void	free_map_content(t_map_content *map_content);
 void	free_closing(t_map_content *map_c, t_vars *vars);
+void	close_img(t_vars *vars, t_images *img);
+void	close_img_1(t_vars *vars, t_images *img);
+
+// free1
+void	free_monster_lst(t_mon *mon);
 #endif

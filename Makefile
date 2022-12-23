@@ -6,7 +6,7 @@
 #    By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 22:58:35 by ajeanne           #+#    #+#              #
-#    Updated: 2022/12/15 16:58:26 by ajeanne          ###   ########.fr        #
+#    Updated: 2022/12/23 01:04:45 by ajeanne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS_GNL = srcs/GNL/
 
 SRCS =		$(SRCS_LOC)main.c					\
 			$(SRCS_LOC)utils.c					\
+			$(SRCS_LOC)utils1.c					\
 			$(SRCS_LOC)map_checker.c			\
 			$(SRCS_LOC)map_checker1.c			\
 			$(SRCS_LOC)error.c					\
@@ -31,8 +32,10 @@ SRCS =		$(SRCS_LOC)main.c					\
 			$(SRCS_LOC)bool_map.c				\
 			$(SRCS_LOC)recursive_checker.c		\
 			$(SRCS_LOC)player.c					\
+			$(SRCS_LOC)monster.c				\
 			$(SRCS_LOC)ft_itoa.c				\
 			$(SRCS_LOC)free.c					\
+			$(SRCS_LOC)free1.c					\
 			$(SRCS_LOC)window.c					\
 			$(SRCS_LOC)hooks.c					\
 			$(SRCS_GNL)get_next_line.c			\

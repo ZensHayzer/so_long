@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:30:09 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/16 20:17:29 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/22 23:57:00 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	p_up(t_map_content *map_c)
 		if (map_c->map[map_c->player_y - 1][map_c->player_x] == 'E')
 			if (map_c->items_got == map_c->items)
 				free_closing(map_c, &map_c->vars);
+		if (map_c->map[map_c->player_y - 1][map_c->player_x] == 'M')
+			free_closing(map_c, &map_c->vars);
 		if (map_c->last_pos == 'E')
 			map_c->map[map_c->player_y][map_c->player_x] = 'E';
 		else
@@ -42,6 +44,8 @@ int	p_left(t_map_content *map_c)
 		if (map_c->map[map_c->player_y][map_c->player_x - 1] == 'E')
 			if (map_c->items_got == map_c->items)
 				free_closing(map_c, &map_c->vars);
+		if (map_c->map[map_c->player_y][map_c->player_x - 1] == 'M')
+			free_closing(map_c, &map_c->vars);
 		if (map_c->last_pos == 'E')
 			map_c->map[map_c->player_y][map_c->player_x] = 'E';
 		else
@@ -63,6 +67,8 @@ int	p_down(t_map_content *map_c)
 		if (map_c->map[map_c->player_y + 1][map_c->player_x] == 'E')
 			if (map_c->items_got == map_c->items)
 				free_closing(map_c, &map_c->vars);
+		if (map_c->map[map_c->player_y + 1][map_c->player_x] == 'M')
+			free_closing(map_c, &map_c->vars);
 		if (map_c->last_pos == 'E')
 			map_c->map[map_c->player_y][map_c->player_x] = 'E';
 		else
@@ -84,6 +90,8 @@ int	p_right(t_map_content *map_c)
 		if (map_c->map[map_c->player_y][map_c->player_x + 1] == 'E')
 			if (map_c->items_got == map_c->items)
 				free_closing(map_c, &map_c->vars);
+		if (map_c->map[map_c->player_y][map_c->player_x + 1] == 'M')
+			free_closing(map_c, &map_c->vars);
 		if (map_c->last_pos == 'E')
 			map_c->map[map_c->player_y][map_c->player_x] = 'E';
 		else
@@ -101,7 +109,6 @@ int	player_move(char c, t_map_content *map_c)
 	int	ret;
 
 	ret = 0;
-	printf("%d\n", map_c->items_got);
 	if (c == 'w')
 		ret = p_up(map_c);
 	else if (c == 'a')
