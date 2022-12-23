@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:31:46 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/22 19:13:17 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:31:41 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 		if (!map_checker(&map_content))
 			return (free_map_content(&map_content), EXIT_FAILURE);
 		if (!monster_init(&map_content, &(map_content.mons)))
-			return (0);
+			return (free_error_monster(&map_content), EXIT_FAILURE);
 		window(map_content);
 		return (free_map_content(&map_content), EXIT_SUCCESS);
 	}

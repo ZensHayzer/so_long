@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:56:49 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 00:55:36 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 01:19:29 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	monster_move_down(t_map_content *map_c, t_mon *mon)
 
 int	monster_move(t_map_content *map_c)
 {
-	int	rd;
-	int	i;
+	int		rd;
+	int		i;
 	t_mon	*tmp;
 
 	i = 0;

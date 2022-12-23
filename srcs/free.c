@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:10:01 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 01:04:19 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:31:36 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ void	free_closing(t_map_content *map_c, t_vars *vars)
 	free_map_content(map_c);
 	free_monster_lst(map_c->mons);
 	exit(0);
+}
+
+void	free_error_monster(t_map_content *map_c)
+{
+	free_monster_lst(map_c->mons);
+	free_map_content(map_c);
 }
 
 void	close_img_1(t_vars *vars, t_images *img)

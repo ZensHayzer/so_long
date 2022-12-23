@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 00:09:58 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 01:03:46 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:38:32 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SOLONG_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include "get_next_line.h"
@@ -52,32 +51,34 @@ typedef struct s_vars
 
 typedef struct s_monster
 {
-	int	mon_x;
-	int	mon_y;
-	char	last_pos;
+	int					mon_x;
+	int					mon_y;
+	char				last_pos;
 	struct s_monster	*next;
 }		t_mon;
 
 typedef struct s_map_content
 {
-	int			walls;
-	int			items;
-	int			exit;
-	int			start;
-	int			enc;
-	int			i;
-	int			tot_lines;
-	int			lines_len;
-	int			items_got;
-	int			player_x;
-	int			player_y;
-	int			mv;
-	char		last_pos;
-	char		*map_name;
-	char		**map;
+	int					walls;
+	int					items;
+	int					exit;
+	int					start;
+	int					enc;
+	int					cnt;
+	int					i;
+	int					j;
+	int					tot_lines;
+	int					lines_len;
+	int					items_got;
+	int					player_x;
+	int					player_y;
+	int					mv;
+	char				last_pos;
+	char				*map_name;
+	char				**map;
 	struct s_monster	*mons;
-	t_images	img;
-	t_vars	vars;
+	t_images			img;
+	t_vars				vars;
 }		t_map_content;
 
 /* ***************************/
@@ -113,8 +114,9 @@ int		is_in(char *str, char c);
 void	fill_window_forest(t_map_content *map_c, char mv, int i, int j);
 
 // utils1
-t_mon	*ft_lstnew();
+t_mon	*ft_lstnew(void);
 int		ft_lstaddback(t_mon **lst, t_mon *element);
+void	if_forest(t_map_content *map_c, char mv, int i, int j);
 
 // initialize
 int		map_content_initializer(t_map_content *map_content);
@@ -145,8 +147,8 @@ int		close_hook_cross(t_map_content *map_c);
 int		animation_p(t_map_content *map_c);
 
 // monster
-int	monster_move_up(t_map_content *map_c, t_mon *mon);
-int	monster_move(t_map_content *map_c);
+int		monster_move_up(t_map_content *map_c, t_mon *mon);
+int		monster_move(t_map_content *map_c);
 
 // player
 int		player_move(char c, t_map_content *map_c);
@@ -157,6 +159,7 @@ char	*ft_itoa(int n);
 //	free
 void	free_map_content(t_map_content *map_content);
 void	free_closing(t_map_content *map_c, t_vars *vars);
+void	free_error_monster(t_map_content *map_c);
 void	close_img(t_vars *vars, t_images *img);
 void	close_img_1(t_vars *vars, t_images *img);
 

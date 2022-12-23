@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:20:25 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/16 19:05:30 by ajeanne          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:38:41 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <stdio.h>
 #include <string.h>
 
 int	wall_checker(t_map_content *map_content)
