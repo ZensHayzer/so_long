@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 12:16:30 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/11/30 09:36:43 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:31:24 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	map_checker_error(int err)
 	ft_puterr("Error\n");
 	if (err == 1)
 		ft_puterr("Map file has to be a .ber\n");
+	if (err == 2)
+		ft_puterr("No access to the file / not a map\n");
+	if (err == 3)
+		ft_puterr("No env found\n");
 	return (0);
 }
 

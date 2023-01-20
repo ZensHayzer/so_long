@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 00:09:58 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 03:38:32 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:15:34 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		present_char(t_map_content *map_content);
 int		wall_checker(t_map_content *map_content);
 int		pre_check_wrong_map(t_map_content *map_content);
 int		access_checker(t_map_content *map_content);
+int		good_file_checker(t_map_content *map_content);
 
 // error
 int		map_checker_error(int err);

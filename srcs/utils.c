@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:43:34 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 02:29:43 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:19:36 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*gnl_corrector(char *str)
 	dest = ft_calloc_so(ft_strlen(str), 1);
 	if (!dest)
 		return (NULL);
-	while (str[i] != '\n')
+	while (str[i] || str[i] != '\n')
 	{
 		dest[i] = str[i];
 		i++;

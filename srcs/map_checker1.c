@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:20:25 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 03:38:41 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:16:29 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,17 @@ int	access_checker(t_map_content *map_content)
 			map_content->player_x) != map_content->items)
 		return (access_checking_error(1, bool_map, map_content->tot_lines));
 	return (free_boolmap(bool_map, map_content->tot_lines), 1);
+}
+
+int	good_file_checker(t_map_content *map_content)
+{
+	int	fd;
+	
+	fd = open(map_content->map_name, O_DIRECTORY);
+	if (fd != -1)
+		return (int	map_checker_error(2));
+	fd = open(map_content->map_name, O_RDONLY);
+	if (fd < 0)
+		return (int	map_checker_error(2));
+	return (1);
 }

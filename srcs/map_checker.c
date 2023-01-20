@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:50:41 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/17 12:41:14 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:57:37 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ber_checker(char *str)
 	{
 		i = ft_strlen(str) - 1;
 		if (str[i] == 'r' && str[i - 1] == 'e'
-			&& str[i - 2] == 'b' && str[i - 3] == '.')
+			&& str[i - 2] == 'b' && str[i - 3] == '.'
+			&& ft_strlen(str) > 4)
 			return (1);
 	}
 	return (0);

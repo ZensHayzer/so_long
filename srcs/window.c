@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:43:53 by ajeanne           #+#    #+#             */
-/*   Updated: 2022/12/23 00:20:41 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:34:05 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	window_init(t_vars *vars, t_map_content *map_c, t_images *img)
 {
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
-		return (0);
+		return (int	map_checker_error(3));
 	if (!init_images(vars->mlx, img))
 		return (0);
 	vars->win = mlx_new_window(vars->mlx, map_c->lines_len * img->x_size,
@@ -87,12 +87,13 @@ int	window_init(t_vars *vars, t_map_content *map_c, t_images *img)
 
 int	window(t_map_content map_c)
 {
-	window_init(&map_c.vars, &map_c, &map_c.img);
+	if (!window_init(&map_c.vars, &map_c, &map_c.img))
+		return (0);
 	fill_window(&map_c, 's');
 	mlx_loop_hook(map_c.vars.mlx, &animation_p, &map_c);
 	mlx_hook(map_c.vars.win, KeyPress, KeyPressMask, &close_hook, &map_c);
 	mlx_hook(map_c.vars.win, ClientMessage, LeaveWindowMask, &close_hook_cross,
 		&map_c);
 	mlx_loop(map_c.vars.mlx);
-	return (0);
+	return (1);
 }
