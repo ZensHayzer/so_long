@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:20:25 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/21 18:59:21 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/21 18:41:43 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	good_file_checker(t_map_content *map_content)
 {
 	int	fd;
 
-	fd = open(map_content->map_name, __O_DIRECTORY);
+	fd = open(map_content->map_name, O_DIRECTORY);
 	if (fd != -1)
 		return (close(fd), map_checker_error(2));
 	fd = open(map_content->map_name, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:43:53 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/23 16:26:03 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:33:09 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	init_images(void *mlx, t_images *img)
 			&img->y_size);
 	img->exit = mlx_xpm_file_to_image(mlx, "assets/exit_c.xpm", &img->x_size,
 			&img->y_size);
+	img->enc = mlx_xpm_file_to_image(mlx, "assets/monster.xpm", &img->x_size,
+			&img->y_size);
 	if (!img->ground || !img->wall || !img->item || !img->p1 || !img->p2
-		|| !img->p3 || !img->p4 || !img->exit || !init_images_1(mlx, img))
+		|| !img->p3 || !img->p4 || !img->exit || !img->enc
+		|| !init_images_1(mlx, img))
 		return (0);
 	return (1);
 }
@@ -88,6 +91,7 @@ int	window(t_map_content map_c)
 		return (close_img(&map_c.vars, &map_c.img),
 			mlx_destroy_display(map_c.vars.mlx), free(map_c.vars.mlx), 0);
 	fill_window(&map_c, 's');
+	mlx_loop_hook(map_c.vars.mlx, &animation_p, &map_c);
 	mlx_hook(map_c.vars.win, KeyPress, KeyPressMask, &close_hook, &map_c);
 	mlx_hook(map_c.vars.win, ClientMessage, LeaveWindowMask, &close_hook_cross,
 		&map_c);

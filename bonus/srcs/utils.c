@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:43:34 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/21 16:38:05 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:26:33 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ void	fill_window_forest(t_map_content *map_c, char mv, int i, int j)
 	else if (map_c->map[i][j] == 'E' && map_c->items == map_c->items_got)
 		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
 			map_c->img.exit_o, j * map_c->img.x_size, i * map_c->img.y_size);
+	else if (map_c->map[i][j] == 'M')
+		mlx_put_image_to_window(map_c->vars.mlx, map_c->vars.win,
+			map_c->img.enc, j * map_c->img.x_size, i * map_c->img.y_size);
 	if_forest(map_c, mv, i, j);
 }

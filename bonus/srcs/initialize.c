@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:21:30 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/23 16:10:33 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:03:51 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	map_content_initializer(t_map_content *map_content)
 	map_content->items = 0;
 	map_content->exit = 0;
 	map_content->start = 0;
+	map_content->enc = 0;
 	map_content->cnt = 0;
 	map_content->i = 0;
 	map_content->j = 0;
@@ -80,4 +81,53 @@ void	access_checker_initializer(t_map_content *map_content,
 		i++;
 	}
 	return ;
+}
+
+int	if_monster_init(t_map_content *map_c, t_mon **mon, int nb, t_mon **tmp)
+{
+	if (nb == 0)
+	{
+		*mon = ft_lstnew();
+		if (!(*mon))
+			return (0);
+		(*mon)->mon_y = map_c->i;
+		(*mon)->mon_x = map_c->j;
+		*tmp = *mon;
+	}
+	else
+	{
+		if (!ft_lstaddback(mon, ft_lstnew()))
+			return (0);
+		while ((*mon)->next)
+			*mon = (*mon)->next;
+		(*mon)->mon_y = map_c->i;
+		(*mon)->mon_x = map_c->j;
+		*mon = *tmp;
+	}
+	return (1);
+}
+
+int	monster_init(t_map_content *map_c, t_mon **mon)
+{
+	int		nb;
+	t_mon	*tmp;
+
+	nb = 0;
+	map_c->i = 0;
+	while (map_c->i < map_c->tot_lines)
+	{
+		map_c->j = 0;
+		while (map_c->j < map_c->lines_len)
+		{
+			if (map_c->map[map_c->i][map_c->j] == 'M')
+			{
+				if (!if_monster_init(map_c, mon, nb, &tmp))
+					return (0);
+				nb++;
+			}
+			map_c->j++;
+		}
+		map_c->i++;
+	}
+	return (1);
 }

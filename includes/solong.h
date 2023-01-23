@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 00:09:58 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/20 17:15:34 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:06:06 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ int		map_content_initializer(t_map_content *map_content);
 void	access_checker_initializer(t_map_content *map_content,
 			t_map_content *map_content_copy);
 int		monster_init(t_map_content *map_c, t_mon **mon);
+
+// initialize1
+int		img_init(t_map_content *map_content);
 
 // bool_map
 void	free_boolmap(int **bool_map, int height);

@@ -6,7 +6,7 @@
 /*   By: ajeanne <ajeanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:50:41 by ajeanne           #+#    #+#             */
-/*   Updated: 2023/01/21 18:59:55 by ajeanne          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:48:11 by ajeanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	is_a_good_char(t_map_content *map_content, char c)
 		map_content->exit++;
 	else if (c == 'P')
 		map_content->start++;
+	else if (c == 'M')
+		map_content->enc++;
 	else
 		return (0);
 	return (1);
